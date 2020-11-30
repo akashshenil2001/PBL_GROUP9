@@ -1,0 +1,182 @@
+<html>  
+<title>
+VLAB:Spring Test
+</title>
+<br>
+<div align="left">
+<img src="pillai's.jpg"alt="logo"height="60" width="150">
+ 
+<center>
+<img src="Virtual-Labs.jpg"alt="logo"height="100" width="400">
+ 
+<div align="right">
+<img src=" logo.jpg"alt="logo"height="60" width="60">  
+</center>
+
+<hr>
+<br>
+<head>
+
+<center>
+<u>
+<B>
+<h1>
+  Experiment : SPRING TEST
+<h1>
+</B>
+</u>
+</center>
+</head>
+<br>
+<hr>
+
+<body>
+&nbsp  &nbsp  &nbsp  &nbsp &nbsp  &nbsp  &nbsp  &nbsp  &nbsp
+&nbsp  &nbsp  &nbsp  &nbsp &nbsp  &nbsp  &nbsp  &nbsp  &nbsp
+&nbsp  &nbsp  &nbsp  &nbsp &nbsp  &nbsp  &nbsp  &nbsp  &nbsp
+
+<IMG SRC="springGIF.gif">
+
+
+&nbsp  &nbsp  &nbsp  &nbsp &nbsp  &nbsp  &nbsp  &nbsp  &nbsp
+&nbsp  &nbsp  &nbsp  &nbsp &nbsp  &nbsp  &nbsp  &nbsp  &nbsp
+&nbsp  &nbsp  &nbsp  &nbsp &nbsp  &nbsp  &nbsp  &nbsp  &nbsp
+&nbsp  &nbsp  &nbsp  &nbsp &nbsp  &nbsp  &nbsp  &nbsp  &nbsp
+&nbsp  &nbsp  &nbsp  &nbsp &nbsp  &nbsp  &nbsp  &nbsp  &nbsp
+&nbsp  &nbsp  &nbsp  &nbsp &nbsp  &nbsp  &nbsp  &nbsp  &nbsp
+&nbsp  &nbsp  &nbsp  &nbsp &nbsp  &nbsp  &nbsp  &nbsp  &nbsp
+&nbsp  &nbsp  &nbsp  &nbsp &nbsp  &nbsp  &nbsp  &nbsp  &nbsp
+&nbsp  &nbsp  &nbsp  &nbsp &nbsp  &nbsp  &nbsp  &nbsp  &nbsp
+
+<img src=" material list.jpg"alt="logo"height="600" width="250">  
+</div>
+
+<form>
+<BR><BR>
+
+ &nbsp  &nbsp  &nbsp  &nbsp  &nbsp  &nbsp  &nbsp  &nbsp  &nbsp
+ &nbsp  &nbsp  &nbsp  &nbsp
+G: <input type="number" id='G' name="G" step="0.001">  
+ 
+ 
+ &nbsp  &nbsp  &nbsp  &nbsp  &nbsp  &nbsp  &nbsp  &nbsp  &nbsp
+ &nbsp  &nbsp  &nbsp  &nbsp  
+d: <input type="number" id="d" step="0.001">
+<br><br>
+
+ 
+ &nbsp  &nbsp  &nbsp  &nbsp  &nbsp  &nbsp  &nbsp  &nbsp  &nbsp
+ &nbsp  &nbsp  &nbsp  &nbsp  
+D: <input type="number" id="D" step="0.001">
+
+&nbsp  &nbsp  &nbsp  &nbsp  &nbsp  &nbsp  &nbsp  &nbsp  &nbsp  
+ &nbsp  &nbsp  &nbsp  &nbsp  
+n: <input type="number" id="n">  
+<br><br>
+<br><br>
+
+ &nbsp  &nbsp  &nbsp  &nbsp  &nbsp  &nbsp  &nbsp  &nbsp  &nbsp    
+PUT THE VALUES OF LOAD BELOW:
+<br><br>
+ &nbsp  &nbsp  &nbsp  &nbsp  &nbsp  &nbsp  &nbsp  &nbsp  &nbsp
+ &nbsp  &nbsp  &nbsp  
+P1: <input type="number" id ="p1" name="P1" step ="0.001" >
+ <br><br>
+
+&nbsp  &nbsp  &nbsp  &nbsp  &nbsp  &nbsp  &nbsp  &nbsp  &nbsp
+ &nbsp  &nbsp  &nbsp  
+P2: <input type="number" id="p2" name="P2" step ="0.001" >
+ <br><br>
+
+&nbsp  &nbsp  &nbsp  &nbsp  &nbsp  &nbsp  &nbsp  &nbsp  &nbsp
+ &nbsp  &nbsp  &nbsp  
+P3: <input type="number" id="p3" name="P3" step ="0.001" >
+ <br><br>
+
+&nbsp  &nbsp  &nbsp  &nbsp  &nbsp  &nbsp  &nbsp  &nbsp  &nbsp
+ &nbsp  &nbsp  &nbsp  
+P4: <input type="number" id="p4" name="P4" step ="0.001" >
+ <br><br>
+
+&nbsp  &nbsp  &nbsp  &nbsp  &nbsp  &nbsp  &nbsp  &nbsp  &nbsp
+ &nbsp  &nbsp  &nbsp  
+P5: <input type="number" id="p5" name="P5" step ="0.001" >
+ <br><br>
+
+To calculate the deflection 'delta' and spring stiffness 'K' click the button below
+<br>
+<button type="button" onclick="graph(document.getElementById('n').value, document.getElementById('G').value, document.getElementById('D').value, document.getElementById('d').value,
+ document.getElementById('p1').value, document.getElementById('p2').value, document.getElementById('p3').value, document.getElementById('p4').value, document.getElementById('p5').value)" name = "submit" value="Calculate" >Submit</button>
+
+ 
+
+</form>
+
+<div id="chartContainer" style="height: 300px; width: 50%;">
+
+<script type="text/javascript">
+  function graph(n,G,D,d,p1,p2,p3,p4,p5)
+  {
+    var D = parseFloat(D);
+    var n = parseFloat(n);
+    var d = parseFloat(d);
+    var G = parseFloat(G);
+    var p1 = parseFloat(p1);
+    var p2 = parseFloat(p2);
+    var p3 = parseFloat(p3);
+    var p4 = parseFloat(p4);
+    var p5 = parseFloat(p5);
+
+    var R = (D-(d/2))/2;
+
+   var K1 = (G*d*d*d*d)/(64*n*R*R*R);
+   var K2 = (G*d*d*d*d)/(64*n*R*R*R);
+   var K3 = (G*d*d*d*d)/(64*n*R*R*R);
+   var K4 = (G*d*d*d*d)/(64*n*R*R*R);
+   var K5 = (G*d*d*d*d)/(64*n*R*R*R);
+
+    var delta1 = (64*p1*R*R*R*n)/(G*d*d*d*d);
+    var delta2 = (64*p2*R*R*R*n)/(G*d*d*d*d);
+    var delta3 = (64*p3*R*R*R*n)/(G*d*d*d*d);
+    var delta4 = (64*p4*R*R*R*n)/(G*d*d*d*d);
+    var delta5 = (64*p5*R*R*R*n)/(G*d*d*d*d);
+
+    var chart = new CanvasJS.Chart("chartContainer", {            
+      title:{
+        text: "P v/s Delta"              
+      },
+
+      data: [  //array of dataSeries    
+     
+     { //dataSeries - second quarter
+
+      type: "line",
+      name: "P",
+      showInLegend: true,              
+      dataPoints: [
+      { x: p1, y: delta1 },
+      { x: p2, y: delta2 },
+      { x: p3, y: delta3 },                                    
+      { x: p4, y: delta4 },
+      { x: p5, y: delta5 },
+      ]
+    }
+    ],
+ /** Set axisY properties here*/
+    axisY:{
+      prefix: "",
+      suffix: ""
+    }    
+  });
+       
+chart.render();
+alert("The value is:\nDELTA 1 : "+ delta1 + "\nDELTA 2 : " + delta2 + "\nDELTA 3 : " + delta3 + "\nDELTA 4 : " + delta4 + "\nDELTA 5 : " + delta5);
+
+}
+
+</script>
+<script type="text/javascript" src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+<p id = 'y11'></p>
+</body>
+
+</html>  
